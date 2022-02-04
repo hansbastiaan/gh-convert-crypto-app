@@ -1,5 +1,10 @@
-body {
+* {
+    padding: 0;
     margin: 10;
+    box-sizing: border-box;
+}
+
+body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
@@ -7,7 +12,21 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+.app {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.news-feed {
+    background-color: blueviolet;
+    margin-top: 10px;
+}
+
+.currency-converter {
+    background-color: lawngreen;
+}
+
+.exchange-rate {
+    background-color: coral;
 }

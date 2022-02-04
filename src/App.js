@@ -1,5 +1,13 @@
+import CurrencyConverter from "./components/CurrencyConverter";
+import Newsfeed from "./components/Newsfeed";
+
 function App() {
-    return <div className="App">Welcome convert-crypto-app</div>;
+    return (
+        <div className="app">
+            <CurrencyConverter />
+            <Newsfeed />
+        </div>
+    );
 }
 
 export default App;
