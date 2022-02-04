@@ -1,5 +1,7 @@
-import ExchangeRate from "./ExchangeRate";
 import { useState } from "react";
+
+import ExchangeRate from "./ExchangeRate";
+
 const CurrencyConverter = () => {
     const currencies = ["BTC", "ETH", "XRP", "LTC", "ADA", "EUR", "USD"];
 
@@ -9,10 +11,16 @@ const CurrencyConverter = () => {
     // LTC = Lattice Token
     // ADA = Cardano
     // EUR = EURO
+    // USD = US Dollar
+
+    // Rapid API = Alpha Vantage = Convert Crypto Currency
+    // URL: https://rapidapi.com/alphavantage/api/alpha-vantage
+    // endpoints: CURRENCY_EXCHANGE_RATE
 
     const [chosenPrimaryCurrency, setChosenPrimaryCurrency] = useState("BTC");
     const [chosenSecondaryCurrency, setChosenSecondaryCurrency] =
         useState("BTC");
+    const [amount, setAmount] = useState(1);
 
     return (
         <div className="currency-converter">
@@ -22,7 +30,8 @@ const CurrencyConverter = () => {
                     <input
                         type="number"
                         name="primaryCurrencyAmount"
-                        value={""}
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
                     />
                 </div>
                 <div className="input-crypto">
