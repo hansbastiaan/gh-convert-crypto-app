@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 import ExchangeRate from "./ExchangeRate";
 
@@ -21,6 +22,44 @@ const CurrencyConverter = () => {
     const [chosenSecondaryCurrency, setChosenSecondaryCurrency] =
         useState("BTC");
     const [amount, setAmount] = useState(1);
+    const [exchangeRate, setExhangeRate] = useState(0);
+    const [result, setResult] = useState(0);
+
+    const convert = () => {
+        const options = {
+            method: "GET",
+            url: "https://alpha-vantage.p.rapidapi.com/query",
+            params: {
+                from_currency: chosenPrimaryCurrency,
+                function: "CURRENCY_EXCHANGE_RATE",
+                to_currency: chosenSecondaryCurrency,
+            },
+            headers: {
+                "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
+                "x-rapidapi-key":
+                    "7c7dac56bbmsha38e82705eb9295p1552a6jsn8b548d23d848",
+            },
+        };
+
+        axios
+            .request(options)
+            .then((response) => {
+                setExhangeRate(
+                    response.data["Realtime Currency Exchange Rate"][
+                        "5. Exchange Rate"
+                    ]
+                );
+                setResult(
+                    response.data["Realtime Currency Exchange Rate"][
+                        "5. Exchange Rate"
+                    ] * amount
+                );
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+    console.log(exchangeRate);
 
     return (
         <div className="currency-converter">
@@ -57,7 +96,8 @@ const CurrencyConverter = () => {
                     <input
                         type="number"
                         name="secondaryCurrencyAmount"
-                        value={""}
+                        value={result}
+                        disabled={true}
                     />
                 </div>
                 <div className="input-crypto">
@@ -75,6 +115,9 @@ const CurrencyConverter = () => {
                     </select>
                 </div>
             </div>
+            <button id="convert-button" onClick={convert}>
+                Convert
+            </button>
         </div>
     );
 };
