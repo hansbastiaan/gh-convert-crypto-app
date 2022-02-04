@@ -1,5 +1,5 @@
 import ExchangeRate from "./ExchangeRate";
-
+import { useState } from "react";
 const CurrencyConverter = () => {
     const currencies = ["BTC", "ETH", "XRP", "LTC", "ADA", "EUR", "USD"];
 
@@ -9,6 +9,10 @@ const CurrencyConverter = () => {
     // LTC = Lattice Token
     // ADA = Cardano
     // EUR = EURO
+
+    const [chosenPrimaryCurrency, setChosenPrimaryCurrency] = useState("BTC");
+    const [chosenSecondaryCurrency, setChosenSecondaryCurrency] =
+        useState("BTC");
 
     return (
         <div className="currency-converter">
@@ -23,9 +27,12 @@ const CurrencyConverter = () => {
                 </div>
                 <div className="input-crypto">
                     <select
-                        value={""}
+                        value={chosenPrimaryCurrency}
                         name="primaryCurrencyOption"
                         className="currency-options"
+                        onChange={(e) =>
+                            setChosenPrimaryCurrency(e.target.value)
+                        }
                     >
                         {currencies.map((currency: string, _index: number) => (
                             <option>{currency}</option>
@@ -35,7 +42,7 @@ const CurrencyConverter = () => {
                 </div>
             </div>
 
-            {/* secumdary currency converter amount */}
+            {/* secundary currency converter amount */}
             <div className="input-box">
                 <div className="amount-secondary-currency">
                     <input
@@ -46,9 +53,12 @@ const CurrencyConverter = () => {
                 </div>
                 <div className="input-crypto">
                     <select
-                        value={""}
+                        value={chosenSecondaryCurrency}
                         name="secondaryCurrencyOption"
                         className="currency-options"
+                        onChange={(e) =>
+                            setChosenSecondaryCurrency(e.target.value)
+                        }
                     >
                         {currencies.map((currency: string, _index: number) => (
                             <option>{currency}</option>
