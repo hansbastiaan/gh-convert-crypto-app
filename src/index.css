@@ -25,8 +25,13 @@ body {
 
 .currency-converter {
     background-color: lawngreen;
+    margin-right: 10px;
 }
 
 .exchange-rate {
     background-color: coral;
+}
+
+.input-box {
+    display: flex;
 }
