@@ -1,7 +1,18 @@
-const ExchangeRate = () => {
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+const ExchangeRate = ({
+    exchangeRate,
+    chosenPrimaryCurrency,
+    chosenSecondaryCurrency,
+}) => {
     return (
         <div className="exchange-rate">
-            <p>Welcome to the Exchange rate</p>
+            <h3>Exchange Rate</h3>
+            <h1>{exchangeRate}</h1>
+            <p>
+                {chosenPrimaryCurrency} to {chosenSecondaryCurrency}
+            </p>
         </div>
     );
 };
