@@ -4,8 +4,11 @@ import Newsfeed from "./components/Newsfeed";
 function App() {
     return (
         <div className="app">
-            <CurrencyConverter />
-            <Newsfeed />
+            <h1>Crypto Dashboard</h1>
+            <div className="app-wrapper">
+                <CurrencyConverter />
+                <Newsfeed />
+            </div>
         </div>
     );
 }
